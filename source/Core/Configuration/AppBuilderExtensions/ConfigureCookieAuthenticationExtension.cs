@@ -49,6 +49,7 @@ namespace Owin
                 CookieSecure = GetCookieSecure(options.SecureMode),
                 TicketDataFormat = new TicketDataFormat(new DataProtectorAdapter(dataProtector, options.Prefix + Constants.PrimaryAuthenticationType)),
                 SessionStore = GetSessionStore(options.SessionStoreProvider),
+                CookieManager = options.CookieManagar,
                 Provider = new CookieAuthenticationProvider
                 {
                     OnValidateIdentity = async cookieCtx =>
@@ -72,6 +73,7 @@ namespace Owin
                 ExpireTimeSpan = Constants.ExternalCookieTimeSpan,
                 SlidingExpiration = false,
                 CookieSecure = GetCookieSecure(options.SecureMode),
+                CookieManager = options.CookieManagar,
                 TicketDataFormat = new TicketDataFormat(new DataProtectorAdapter(dataProtector, options.Prefix + Constants.ExternalAuthenticationType))
             };
             app.UseCookieAuthentication(external);
@@ -84,6 +86,7 @@ namespace Owin
                 ExpireTimeSpan = options.ExpireTimeSpan,
                 SlidingExpiration = options.SlidingExpiration,
                 CookieSecure = GetCookieSecure(options.SecureMode),
+                CookieManager = options.CookieManagar,
                 TicketDataFormat = new TicketDataFormat(new DataProtectorAdapter(dataProtector, options.Prefix + Constants.PartialSignInAuthenticationType))
             };
             app.UseCookieAuthentication(partial);
