@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+using Microsoft.Owin.Infrastructure;
 using System;
 
 namespace IdentityServer3.Core.Configuration
@@ -107,7 +108,13 @@ namespace IdentityServer3.Core.Configuration
         /// </summary>
         public IAuthenticationSessionStoreProvider SessionStoreProvider { get; set; }
 
-
+        /// <summary>
+        /// Allows consuming application to set CookieManager.
+        /// This is done to solve Cookie specific issue as mentioned in following links:
+        /// https://github.com/IdentityServer/IdentityServer3/issues/2884
+        /// https://github.com/aspnet/AspNetKatana/wiki/System.Web-response-cookie-integration-issues
+        /// </summary>
+        public ICookieManager CookieManagar { get; set; }
 
     }
 }
