@@ -623,12 +623,10 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>CD $(SolutionDir)
-CD packages\ILMerge.2.14.1208\tools\
-MD $(TargetDir)\ILMerged
-ILMerge.exe $(TargetDir)IdentityServer3.dll $(TargetDir)Autofac.dll $(TargetDir)Microsoft.Owin.StaticFiles.dll $(TargetDir)Microsoft.Owin.FileSystems.dll $(TargetDir)Autofac.Integration.WebApi.dll $(TargetDir)System.Web.Http.Tracing.dll /out:$(TargetDir)\ILMerged\IdentityServer3.dll
-
-</PostBuildEvent>
+    <PostBuildEvent>CD "$(SolutionDir)"
+CD packages\ILMerge.2.14.1208\tools
+MD "$(TargetDir)ILMerged"
+ILMerge.exe "$(TargetDir)IdentityServer3.dll" "$(TargetDir)Autofac.dll" "$(TargetDir)Microsoft.Owin.StaticFiles.dll" "$(TargetDir)Microsoft.Owin.FileSystems.dll" "$(TargetDir)Autofac.Integration.WebApi.dll" "$(TargetDir)System.Web.Http.Tracing.dll" /out:"$(TargetDir)ILMerged\IdentityServer3.dll"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
